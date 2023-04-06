@@ -5,8 +5,6 @@ function getComputerChoice(){
     return CHOICES[randomNumber];    
 }
 
-let computerSelection = getComputerChoice();
-
 function playRound(computerSelection){
     let playerSelection;
     let result = "";
@@ -20,7 +18,7 @@ function playRound(computerSelection){
     console.log(player, computer);
 
     if (playerSelection === computer){
-        result = "Draw!";
+        result = "Tie Game!";
     }
     else if (player === "rock"){
         (computer === "scissors") ? result = "You Win! Rock beats Scissors" : result = "You Lose! Paper beats Rock";
@@ -34,4 +32,30 @@ function playRound(computerSelection){
     return result;
 }
 
-console.log(playRound(computerSelection));
+function game(){
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 5; i > 0; i--){
+        let computerSelection = getComputerChoice();
+        let winner = playRound(computerSelection).slice(0, 5);
+        if (winner === "You W"){
+            playerScore += 1;
+        }
+        else if (winner === "You L"){
+            computerScore += 1;
+        }
+        console.log(`Player: ${playerScore} Computer: ${computerScore}`);
+    }
+    if (playerScore > computerScore){
+        return `Player won ${playerScore}:${computerScore}`;
+    }
+    else if (computerScore > playerScore){
+        return `Computer won ${computerScore}:${playerScore}`;
+    }
+    else{
+        return `It's a tie! ${playerScore}:${computerScore}`;
+    }
+}
+
+console.log(game());
