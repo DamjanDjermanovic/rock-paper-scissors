@@ -47,6 +47,7 @@ function game(){
         }
         console.log(`Player: ${playerScore} Computer: ${computerScore}`);
     }
+    
     if (playerScore > computerScore){
         return `Player won ${playerScore}:${computerScore}`;
     }
