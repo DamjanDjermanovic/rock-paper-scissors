@@ -1,29 +1,25 @@
+const CHOICES = ["rock", "paper", "scissors"];
+
 function getComputerChoice(){
-    let randomNumber = Math.floor((Math.random() * 3) + 1);
-    let computerSelection = "";
-    switch(randomNumber){
-        case 1:
-            computerSelection = "Rock";
-            break;
-        case 2:
-            computerSelection = "Paper";
-            break;
-        case 3:
-            computerSelection = "Scissors"
-            break;
-    }
-    return computerSelection;
+    const randomNumber = Math.floor(Math.random() * 3)
+    return CHOICES[randomNumber];    
 }
 
-let computerSelection = getComputerChoice()
-let playerSelection = prompt("Select rock, paper or scissors!")
+let computerSelection = getComputerChoice();
 
-function playRound(computerSelection, playerSelection){
-    let player = playerSelection.toLowerCase();
-    let computer = computerSelection.toLowerCase();
+function playRound(computerSelection){
+    let playerSelection;
     let result = "";
 
-    if (player === computer){
+    do {
+        playerSelection = prompt("Select rock, paper or scissors!").toLowerCase();
+    } while (CHOICES.indexOf(playerSelection) === -1)
+
+    let player = playerSelection.toLowerCase();
+    let computer = computerSelection.toLowerCase();
+    console.log(player, computer);
+
+    if (playerSelection === computer){
         result = "Draw!";
     }
     else if (player === "rock"){
@@ -35,12 +31,7 @@ function playRound(computerSelection, playerSelection){
     else if (player === "scissors"){
         (computer === "paper") ? result = "You Win! Scissors beats Paper" : result = "You Lose! Rock beats Scissors";
     }
-    else {
-        result = "Invalid input";
-    }
     return result;
 }
 
-console.log(playerSelection);
-console.log(computerSelection);
-console.log(playRound(computerSelection, playerSelection));
+console.log(playRound(computerSelection));
