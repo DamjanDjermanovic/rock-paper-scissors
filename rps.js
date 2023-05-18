@@ -1,4 +1,5 @@
 const CHOICES = ["rock", "paper", "scissors"];
+
 const rock = document.querySelector('#rock');
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
@@ -47,16 +48,20 @@ function setWinner(score1, score2) {
     }
 }  
 
-rock.addEventListener("click", () => {
-    let computerSelection = getComputerChoice();
-    let result = playRound("rock", computerSelection);
-
+function roundResult(result){
     if (result.includes("You Win!")){
         playerScore += 1;
     }
     else if (result.includes("You Lose!")){
         computerScore += 1;
     }
+}
+
+rock.addEventListener("click", () => {
+    let computerSelection = getComputerChoice();
+    let result = playRound("rock", computerSelection);
+
+    roundResult(result);
 
     logScore(playerScore, computerScore, computerSelection);
 
@@ -67,12 +72,7 @@ paper.addEventListener("click", () => {
     let computerSelection = getComputerChoice();
     let result = playRound("rock", computerSelection);
 
-    if (result.includes("You Win!")){
-        playerScore += 1;
-    }
-    else if (result.includes("You Lose!")){
-        computerScore += 1;
-    }
+    roundResult(result);
 
     logScore(playerScore, computerScore, computerSelection);
 
@@ -83,12 +83,7 @@ scissors.addEventListener("click", () => {
     let computerSelection = getComputerChoice();
     let result = playRound("rock", computerSelection);
 
-    if (result.includes("You Win!")){
-        playerScore += 1;
-    }
-    else if (result.includes("You Lose!")){
-        computerScore += 1;
-    }
+    roundResult(result);
 
     logScore(playerScore, computerScore, computerSelection);
 
