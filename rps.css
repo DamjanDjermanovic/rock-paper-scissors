@@ -19,13 +19,16 @@ button {
     color: black;
     padding: 20px 56px;
     margin: 24px;
-    font-size: 18px;
+    font-size: 24px;
     border: 1px solid darkgray;
     border-radius: 5px;
+    text-align: center;
+    width: 200px;
 }
 
 p {
     margin: 8px;
+    font-size: 24px;
 }
 
 button:hover {
@@ -34,4 +37,8 @@ button:hover {
 
 .textContainer {
     text-align: center;
+}
+
+span {
+    font-size: 40px;
 }

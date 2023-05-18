@@ -1,4 +1,4 @@
-const CHOICES = ["rock", "paper", "scissors"];
+const CHOICES = ["rock 👊", "paper ✋", "scissors ✌️"];
 
 const rock = document.querySelector('#rock');
 const paper = document.querySelector("#paper");
@@ -22,14 +22,14 @@ function playRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
         result = "Tie Game!";
     }
-    else if (playerSelection === "rock") {
-        (computerSelection === "scissors") ? result = "You Win! Rock beats Scissors" : result = "You Lose! Paper beats Rock";
+    else if (playerSelection.includes("rock")) {
+        (computerSelection.includes("scissors")) ? result = "You Win! Rock beats Scissors" : result = "You Lose! Paper beats Rock";
     }
-    else if (playerSelection === "paper") {
-        (computerSelection === "rock") ? result = "You Win! Paper beats Rock" : result = "You Lose! Scissors beats Paper";
+    else if (playerSelection.includes("paper")) {
+        (computerSelection.includes("rock")) ? result = "You Win! Paper beats Rock" : result = "You Lose! Scissors beats Paper";
     }
-    else if (playerSelection === "scissors") {
-        (computerSelection === "paper") ? result = "You Win! Scissors beats Paper" : result = "You Lose! Rock beats Scissors";
+    else if (playerSelection.includes("scissors")) {
+        (computerSelection.includes("paper")) ? result = "You Win! Scissors beats Paper" : result = "You Lose! Rock beats Scissors";
     }
     return result;
 }
