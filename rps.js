@@ -67,9 +67,7 @@ rock.addEventListener("click", () => {
     let result = playRound(CHOICES[0], computerSelection);
 
     roundResult(result);
-
     logScore(playerScore, computerScore, computerSelection);
-
     setWinner(playerScore, computerScore);
 });
 
@@ -78,9 +76,7 @@ paper.addEventListener("click", () => {
     let result = playRound(CHOICES[1], computerSelection);
 
     roundResult(result);
-
     logScore(playerScore, computerScore, computerSelection);
-
     setWinner(playerScore, computerScore);
 });
 
@@ -89,8 +85,6 @@ scissors.addEventListener("click", () => {
     let result = playRound(CHOICES[2], computerSelection);
 
     roundResult(result);
-
     logScore(playerScore, computerScore, computerSelection);
-
     setWinner(playerScore, computerScore);
 });
