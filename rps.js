@@ -2,9 +2,10 @@ const CHOICES = ["rock", "paper", "scissors"];
 const rock = document.querySelector('#rock');
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
-const scoreBoard = document.querySelector("#scoreBoard");
-const computer = document.querySelector("#computer");
+const scorePlayer = document.querySelector("#scorePlayer");
+const computersChoice = document.querySelector("#computersChoice");
 const winner = document.querySelector("#winner");
+const scoreComputer = document.querySelector("#scoreComputer");
 
 let computerScore = 0;
 let playerScore = 0;
@@ -20,17 +21,31 @@ function playRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
         result = "Tie Game!";
     }
-    else if (playerSelection === "rock"){
+    else if (playerSelection === "rock") {
         (computerSelection === "scissors") ? result = "You Win! Rock beats Scissors" : result = "You Lose! Paper beats Rock";
     }
-    else if (playerSelection === "paper"){
+    else if (playerSelection === "paper") {
         (computerSelection === "rock") ? result = "You Win! Paper beats Rock" : result = "You Lose! Scissors beats Paper";
     }
-    else if (playerSelection === "scissors"){
+    else if (playerSelection === "scissors") {
         (computerSelection === "paper") ? result = "You Win! Scissors beats Paper" : result = "You Lose! Rock beats Scissors";
     }
     return result;
 }
+
+function logScore(playerScore, computerScore, computerSelection){
+    computersChoice.textContent = "Computers choice: " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1);;
+    scorePlayer.textContent = "Player: " + playerScore;
+    scoreComputer.textContent = "Computer: " + computerScore;
+}
+
+function setWinner(score1, score2) {
+    if (score1 === 5 || score2 === 5) {
+      (score1 === 5) ? winner.textContent = "You win!" : winner.textContent = "Computer wins!";
+      playerScore = 0;
+      computerScore = 0;
+    }
+}  
 
 rock.addEventListener("click", () => {
     let computerSelection = getComputerChoice();
@@ -43,21 +58,9 @@ rock.addEventListener("click", () => {
         computerScore += 1;
     }
 
-    computer.textContent = "Computers choice: " + computerSelection;
-    scoreBoard.textContent = "Player:" + playerScore + " / " + "Computer:" + computerScore;
+    logScore(playerScore, computerScore, computerSelection);
 
-    if (computerScore === 5){
-
-        playerScore = 0;
-        computerScore = 0;
-        winner.textContent = "Computer won!";
-    }
-
-    if (playerScore === 5){
-        playerScore = 0;
-        computerScore = 0;
-        winner.textContent = "You win!";
-    }
+    setWinner(playerScore, computerScore);
 });
 
 paper.addEventListener("click", () => {
@@ -71,21 +74,9 @@ paper.addEventListener("click", () => {
         computerScore += 1;
     }
 
-    computer.textContent = "Computers choice: " + computerSelection;
-    scoreBoard.textContent = "Player:" + playerScore + " / " + "Computer:" + computerScore;
+    logScore(playerScore, computerScore, computerSelection);
 
-    if (computerScore === 5){
-
-        playerScore = 0;
-        computerScore = 0;
-        winner.textContent = "Computer won!";
-    }
-
-    if (playerScore === 5){
-        playerScore = 0;
-        computerScore = 0;
-        winner.textContent = "You win!";
-    }
+    setWinner(playerScore, computerScore);
 });
 
 scissors.addEventListener("click", () => {
@@ -99,19 +90,7 @@ scissors.addEventListener("click", () => {
         computerScore += 1;
     }
 
-    computer.textContent = "Computers choice: " + computerSelection;
-    scoreBoard.textContent = "Player:" + playerScore + " / " + "Computer:" + computerScore;
+    logScore(playerScore, computerScore, computerSelection);
 
-    if (computerScore === 5){
-
-        playerScore = 0;
-        computerScore = 0;
-        winner.textContent = "Computer won!";
-    }
-
-    if (playerScore === 5){
-        playerScore = 0;
-        computerScore = 0;
-        winner.textContent = "You win!";
-    }
+    setWinner(playerScore, computerScore);
 });
