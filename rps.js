@@ -70,7 +70,7 @@ rock.addEventListener("click", () => {
 
 paper.addEventListener("click", () => {
     let computerSelection = getComputerChoice();
-    let result = playRound("rock", computerSelection);
+    let result = playRound("paper", computerSelection);
 
     roundResult(result);
 
@@ -81,7 +81,7 @@ paper.addEventListener("click", () => {
 
 scissors.addEventListener("click", () => {
     let computerSelection = getComputerChoice();
-    let result = playRound("rock", computerSelection);
+    let result = playRound("scissors", computerSelection);
 
     roundResult(result);
 
