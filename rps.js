@@ -1,19 +1,21 @@
 const CHOICES = ["rock", "paper", "scissors"];
+const rock = document.querySelector('#rock');
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const scoreBoard = document.querySelector("#scoreBoard");
+const computer = document.querySelector("#computer");
+const winner = document.querySelector("#winner");
+
+let computerScore = 0;
+let playerScore = 0;
 
 function getComputerChoice(){
     const randomNumber = Math.floor(Math.random() * 3)
     return CHOICES[randomNumber];    
 }
 
-function playRound(computerSelection){
-    let playerSelection;
+function playRound(playerSelection, computerSelection){
     let result = "";
-
-    do {
-        playerSelection = prompt("Select rock, paper or scissors!").toLowerCase();
-    } while (CHOICES.indexOf(playerSelection) === -1)
-
-    console.log(playerSelection, computerSelection);
 
     if (playerSelection === computerSelection){
         result = "Tie Game!";
@@ -30,31 +32,86 @@ function playRound(computerSelection){
     return result;
 }
 
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
+rock.addEventListener("click", () => {
+    let computerSelection = getComputerChoice();
+    let result = playRound("rock", computerSelection);
 
-    for (let i = 5; i > 0; i--){
-        let computerSelection = getComputerChoice();
-        let winner = playRound(computerSelection).slice(0, 5);
-        if (winner === "You W"){
-            playerScore += 1;
-        }
-        else if (winner === "You L"){
-            computerScore += 1;
-        }
-        console.log(`Player: ${playerScore} Computer: ${computerScore}`);
+    if (result.includes("You Win!")){
+        playerScore += 1;
     }
-    
-    if (playerScore > computerScore){
-        return `Player won ${playerScore}:${computerScore}`;
+    else if (result.includes("You Lose!")){
+        computerScore += 1;
     }
-    else if (computerScore > playerScore){
-        return `Computer won ${computerScore}:${playerScore}`;
-    }
-    else{
-        return `It's a tie! ${playerScore}:${computerScore}`;
-    }
-}
 
-//console.log(game());
+    computer.textContent = "Computers choice: " + computerSelection;
+    scoreBoard.textContent = "Player:" + playerScore + " / " + "Computer:" + computerScore;
+
+    if (computerScore === 5){
+
+        playerScore = 0;
+        computerScore = 0;
+        winner.textContent = "Computer won!";
+    }
+
+    if (playerScore === 5){
+        playerScore = 0;
+        computerScore = 0;
+        winner.textContent = "You win!";
+    }
+});
+
+paper.addEventListener("click", () => {
+    let computerSelection = getComputerChoice();
+    let result = playRound("rock", computerSelection);
+
+    if (result.includes("You Win!")){
+        playerScore += 1;
+    }
+    else if (result.includes("You Lose!")){
+        computerScore += 1;
+    }
+
+    computer.textContent = "Computers choice: " + computerSelection;
+    scoreBoard.textContent = "Player:" + playerScore + " / " + "Computer:" + computerScore;
+
+    if (computerScore === 5){
+
+        playerScore = 0;
+        computerScore = 0;
+        winner.textContent = "Computer won!";
+    }
+
+    if (playerScore === 5){
+        playerScore = 0;
+        computerScore = 0;
+        winner.textContent = "You win!";
+    }
+});
+
+scissors.addEventListener("click", () => {
+    let computerSelection = getComputerChoice();
+    let result = playRound("rock", computerSelection);
+
+    if (result.includes("You Win!")){
+        playerScore += 1;
+    }
+    else if (result.includes("You Lose!")){
+        computerScore += 1;
+    }
+
+    computer.textContent = "Computers choice: " + computerSelection;
+    scoreBoard.textContent = "Player:" + playerScore + " / " + "Computer:" + computerScore;
+
+    if (computerScore === 5){
+
+        playerScore = 0;
+        computerScore = 0;
+        winner.textContent = "Computer won!";
+    }
+
+    if (playerScore === 5){
+        playerScore = 0;
+        computerScore = 0;
+        winner.textContent = "You win!";
+    }
+});

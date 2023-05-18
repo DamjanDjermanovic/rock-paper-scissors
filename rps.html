@@ -5,14 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="rps.js"></script>
+    <link rel="stylesheet" href="rps.css">
+    <script src="rps.js" defer></script>
 </head>
 <body>
-    <div class="buttons">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+    <div class="rps-container">
+        <button class="rps-button" id="rock">
+            <span class="rps-icon">&#9994;</span>
+            Rock
+        </button>
+        <button class="rps-button" id="paper">
+            <span class="rps-icon">&#128400;</span>
+            Paper
+        </button>
+        <button class="rps-button" id="scissors">
+            <span class="rps-icon">&#9996;</span>
+            Scissors
+        </button>
+    </div>          
+    <div class="textContainer">
+        <p id="computer">Computers choice:</p>
+        <p id="scoreBoard">Player:0 / Computer:0</p>
+        <p id="winner">First to five!</p>
     </div>
-    <div class="results"></div>
 </body>
 </html>
