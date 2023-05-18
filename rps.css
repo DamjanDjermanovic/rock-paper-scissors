@@ -24,11 +24,15 @@ button {
     border-radius: 5px;
     text-align: center;
     width: 200px;
+    font-weight: 300;
 }
 
 p {
     margin: 8px;
     font-size: 24px;
+}
+span {
+    font-size: 40px;
 }
 
 button:hover {
@@ -39,6 +43,11 @@ button:hover {
     text-align: center;
 }
 
-span {
-    font-size: 40px;
+.tc {
+    padding-bottom: 30px;
+}
+
+#computerDisp {
+    font-size: 30px;
+    font-weight: 300;
 }

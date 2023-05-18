@@ -4,9 +4,10 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 const scorePlayer = document.querySelector("#scorePlayer");
-const computersChoice = document.querySelector("#computersChoice");
+const computerDisp = document.querySelector("#computerDisp");
 const winner = document.querySelector("#winner");
 const scoreComputer = document.querySelector("#scoreComputer");
+const results = document.querySelector("#results");
 
 let computerScore = 0;
 let playerScore = 0;
@@ -19,7 +20,7 @@ function getComputerChoice(){
 function playRound(playerSelection, computerSelection){
     let result = "";
 
-    if (playerSelection === computerSelection){
+    if (computerSelection === playerSelection) {
         result = "Tie Game!";
     }
     else if (playerSelection.includes("rock")) {
@@ -35,7 +36,7 @@ function playRound(playerSelection, computerSelection){
 }
 
 function logScore(playerScore, computerScore, computerSelection){
-    computersChoice.textContent = "Computers choice: " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1);;
+    computerDisp.textContent = "Computers choice: " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1);;
     scorePlayer.textContent = "Player: " + playerScore;
     scoreComputer.textContent = "Computer: " + computerScore;
 }
@@ -46,6 +47,9 @@ function setWinner(score1, score2) {
       playerScore = 0;
       computerScore = 0;
     }
+    else{
+        winner.textContent = "First to five!";
+    }
 }  
 
 function roundResult(result){
@@ -55,11 +59,12 @@ function roundResult(result){
     else if (result.includes("You Lose!")){
         computerScore += 1;
     }
+    results.textContent = result;
 }
 
 rock.addEventListener("click", () => {
     let computerSelection = getComputerChoice();
-    let result = playRound("rock", computerSelection);
+    let result = playRound(CHOICES[0], computerSelection);
 
     roundResult(result);
 
@@ -70,7 +75,7 @@ rock.addEventListener("click", () => {
 
 paper.addEventListener("click", () => {
     let computerSelection = getComputerChoice();
-    let result = playRound("paper", computerSelection);
+    let result = playRound(CHOICES[1], computerSelection);
 
     roundResult(result);
 
@@ -81,7 +86,7 @@ paper.addEventListener("click", () => {
 
 scissors.addEventListener("click", () => {
     let computerSelection = getComputerChoice();
-    let result = playRound("scissors", computerSelection);
+    let result = playRound(CHOICES[2], computerSelection);
 
     roundResult(result);
 
